@@ -1,12 +1,3 @@
-provider "aws" {
-  region = "us-east-1"
-
-  assume_role {
-    role_arn     = "arn:aws:iam::822088705249:role/BNCTerraform"
-    session_name = "terraform"
-  }
-}
-
 data "aws_availability_zones" "available" {
   state = "available"
 }

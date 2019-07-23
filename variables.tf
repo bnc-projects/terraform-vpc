@@ -6,7 +6,7 @@ variable "assign_generated_ipv6_cidr_block" {
 
 variable "cidr_block" {
   description = "The CIDR block for the VPC. Default value is a valid CIDR, but not acceptable by AWS and should be overridden"
-  default     = "10.255.0.0/16"
+  default     = "0.0.0.0/0"
   type        = string
 }
 
@@ -74,7 +74,7 @@ variable "enable_dns_support" {
 variable "enable_nat_gateway" {
   description = "Should be true if you want to provision NAT Gateways for the private networks"
   type        = bool
-  default     = true
+  default     = false
 }
 
 variable "instance_tenancy" {
@@ -86,7 +86,7 @@ variable "instance_tenancy" {
 variable "name" {
   description = "The name to use when tagging resources"
   type        = string
-  default     = "BNC"
+  default     = ""
 }
 
 variable "public_inbound_acl_rules" {
