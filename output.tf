@@ -15,5 +15,5 @@ output "nat_gateway_ips" {
 }
 
 output "vpc" {
-  value = aws_vpc.main.*
+  value = aws_vpc.main
 }
