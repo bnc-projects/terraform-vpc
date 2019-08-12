@@ -31,11 +31,7 @@ resource "aws_subnet" "public" {
   vpc_id                          = aws_vpc.main.id
   tags                            = merge(
   {
-    "Name" = format("%s-%s-%s",
-    var.name,
-    "public",
-    data.aws_availability_zones.available.names[count.index]
-    )
+    "Name" = format("%s-%s-%s", var.name, "public", data.aws_availability_zones.available.names[count.index])
     "AZ"   = data.aws_availability_zones.available.names[count.index],
     "Type" = "public"
   },
@@ -52,11 +48,7 @@ resource "aws_subnet" "private" {
   vpc_id                          = aws_vpc.main.id
   tags                            = merge(
   {
-    "Name" = format("%s-%s-%s",
-    var.name,
-    "private",
-    data.aws_availability_zones.available.names[count.index]
-    )
+    "Name" = format("%s-%s-%s", var.name, "private", data.aws_availability_zones.available.names[count.index])
     "AZ"   = data.aws_availability_zones.available.names[count.index],
     "Type" = "private"
   },
@@ -73,11 +65,7 @@ resource "aws_subnet" "database" {
   vpc_id                          = aws_vpc.main.id
   tags                            = merge(
   {
-    "Name" = format("%s-%s-%s",
-    var.name,
-    "database",
-    data.aws_availability_zones.available.names[count.index]
-    )
+    "Name" = format("%s-%s-%s", var.name, "database", data.aws_availability_zones.available.names[count.index])
     "AZ"   = data.aws_availability_zones.available.names[count.index],
     "Type" = "database"
   },
@@ -91,10 +79,7 @@ resource "aws_route_table" "public" {
 
   tags = merge(
   {
-    "Name" = format("%s-public-%s",
-    var.name,
-    data.aws_availability_zones.available.names[count.index]
-    )
+    "Name" = format("%s-public-%s", var.name, data.aws_availability_zones.available.names[count.index])
     "Type" = "public",
     "AZ"   = data.aws_availability_zones.available.names[count.index]
   },
@@ -118,10 +103,7 @@ resource "aws_route_table" "private" {
 
   tags = merge(
   {
-    "Name" = format("%s-private-%s",
-    var.name,
-    data.aws_availability_zones.available.names[count.index]
-    )
+    "Name" = format("%s-private-%s", var.name, data.aws_availability_zones.available.names[count.index])
     "Type" = "private",
     "AZ"   = data.aws_availability_zones.available.names[count.index]
   },
@@ -145,10 +127,7 @@ resource "aws_route_table" "database" {
 
   tags = merge(
   {
-    "Name" = format("%s-database-%s",
-    var.name,
-    data.aws_availability_zones.available.names[count.index]
-    )
+    "Name" = format("%s-database-%s", var.name, data.aws_availability_zones.available.names[count.index])
     "Type" = "database",
     "AZ"   = data.aws_availability_zones.available.names[count.index]
   },
@@ -185,11 +164,7 @@ resource "aws_eip" "nat" {
   vpc   = true
   tags  = merge(
   {
-    "Name" = format("%s-%s-%s",
-    var.name,
-    "nat-eip",
-    data.aws_availability_zones.available.names[count.index]
-    )
+    "Name" = format("%s-%s-%s", var.name, "nat-eip", data.aws_availability_zones.available.names[count.index])
     "AZ"   = data.aws_availability_zones.available.names[count.index]
   },
   var.tags,
@@ -203,11 +178,7 @@ resource "aws_nat_gateway" "nat_gateway" {
 
   tags = merge(
   {
-    "Name" = format("%s-%s-%s",
-    var.name,
-    "nat-gateway",
-    data.aws_availability_zones.available.names[count.index]
-    )
+    "Name" = format("%s-%s-%s", var.name, "nat-gateway", data.aws_availability_zones.available.names[count.index])
     "AZ"   = data.aws_availability_zones.available.names[count.index]
   },
   var.tags,
@@ -248,10 +219,7 @@ resource "aws_network_acl" "public" {
 
   tags = merge(
   {
-    "Name" = format("%s-%s",
-    var.name,
-    "public"
-    )
+    "Name" = format("%s-%s", var.name, "public")
   },
   var.tags,
   )
@@ -263,10 +231,7 @@ resource "aws_network_acl" "private" {
 
   tags = merge(
   {
-    "Name" = format("%s-%s",
-    var.name,
-    "private"
-    )
+    "Name" = format("%s-%s", var.name, "private")
   },
   var.tags,
   )
@@ -278,10 +243,7 @@ resource "aws_network_acl" "database" {
 
   tags = merge(
   {
-    "Name" = format("%s-%s",
-    var.name,
-    "database"
-    )
+    "Name" = format("%s-%s", var.name, "database")
   },
   var.tags,
   )
