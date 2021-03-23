@@ -1,4 +1,8 @@
 output "public_subnets" {
+  value = aws_subnet.public.*
+}
+
+output "public_subnets_id" {
   value = aws_subnet.public.*.id
 }
 
